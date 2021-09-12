@@ -1,92 +1,55 @@
 import { useEffect, useState } from "react";
-import { nanoid } from 'nanoid';
-import randomColor from "randomcolor";
 
-import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
-import NotesList from "./components/NotesList";
-import AddNote from "./components/AddNote";
+import { Switch, Route } from "react-router-dom";
+
+import { getDataFromLocalStorage, setDataToLocalStorage } from "./components/utility/functions/workWithLocalStorage";
+
+import Header from "./components/Header/Header";
+import Dashboard from "./components/Dashboard/Dashboard";
+import SelectedNote from "./components/SelectedNote/SelectedNote";
+import InfoPopup from "./components/InfoPopup/InfoPopup";
+
 
 const App = () => {
 
-  const [notes, setNotes] = useState([]);
-  const [searchBarText, setSearchBarText] = useState('');
-  const [darkMode, setDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const addNote = (text, fontFamily) => {
+    // sets isDarkMode from local storage when component mounted
+    useEffect(() => {
+        const isDarkModeData = getDataFromLocalStorage('darkMode');
+        setIsDarkMode(isDarkModeData);
+    }, []);
 
-    const newNote = {
-      id: nanoid(),
-      text: text,
-      date: new Date().toLocaleDateString().split('.').join('/'),
-      color: randomColor({
-        luminosity: 'light'
-      }),
-      fontFamily: fontFamily
-    };
+    // sets isDarkMode to local storage when component update
+    useEffect(() => {
+        setDataToLocalStorage('darkMode', isDarkMode);
+    }, [isDarkMode])
 
-    const updatedNotes = [...notes, newNote];
-    setNotes(updatedNotes);
+    return (
+        <main
+            className={`main ${isDarkMode && 'dark-mode'}`}
+        >
+            <Header
+                isDarkMode={isDarkMode}
+                setDarkMode={setIsDarkMode}
+            />
+            <div className="container">
 
-  };
+                <Switch>
+                    <Route exact path="/">
+                        <Dashboard />
+                    </Route>
 
-  const deleteNote = (id) => {
-    const updatedNotes = notes.filter(note => note.id !== id);
-    setNotes(updatedNotes);
-  };
+                    <Route path="/:id" >
+                        <SelectedNote />
+                    </Route>
+                </Switch>
 
-  const toggleDarkMode = () => {
-    setDarkMode((prevDarkModeState) => !prevDarkModeState);
-  };
+                <InfoPopup />
 
-  const handleSearchBar = (searchText) => {
-    setSearchBarText(searchText);
-  };
-
-  // Filtered data of notes list
-  const filteredNotes = notes.filter(note => {
-    return note.text.toLowerCase().includes(searchBarText.toLowerCase());
-  });
-
-  // Component mount. Getting data from local storage
-  useEffect(() => {
-    
-    // initialisation of the app width this data
-    const notesFromLocalStorage = JSON.parse(localStorage.getItem('notes')) || [];
-    setNotes(notesFromLocalStorage);
-
-    const isDarkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
-    setDarkMode(isDarkMode);
-
-  }, []);
-
-  // Component update. Update local storage
-  useEffect(() => {
-    
-    localStorage.setItem('notes', JSON.stringify(notes));
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-  
-  }, [notes, darkMode]);
-
-  return (
-
-    <main 
-      className={`main ${darkMode && 'dark-mode'}`}
-    >
-      <Header toggleDarkMode={toggleDarkMode} />
-
-      <div className="container">
-        <SearchBar handleSearchBar={handleSearchBar} />
-        <NotesList
-          notes={filteredNotes}
-          addNote={addNote}
-          deleteNote={deleteNote}
-        />
-        <AddNote addNote={addNote} />
-      </div>
-
-    </main>
-  );
+            </div>
+        </main>
+    );
 };
 
 export default App;

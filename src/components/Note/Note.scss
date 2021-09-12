@@ -1,0 +1,74 @@
+.note {
+    font-size: 1rem;
+    background-color: #fef68a;
+    border-radius: .4em;
+    padding: 1em;
+    min-height: 10em;
+    width: calc(100% / 12 * 6 - 1em);
+    display: flex;
+    flex-direction: column;
+    margin: .5em;
+    white-space: pre-wrap; /* keep the line spacing */
+
+    &:hover {
+        z-index: 1000;
+        box-shadow: 0 0 .5em #adaeaf;
+    }
+
+    &-title {
+      font-family: 'Fredericka the Great', cursive;
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+
+    &-text {
+      display: none;
+    }
+
+    &-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+    }
+
+    .inline-image {
+      display: none;
+      width: 50%;
+      margin: 0 auto .2em;
+    }
+
+    .hidden-text-placeholder {
+      font-family: 'Fredericka the Great', cursive;
+      font-size: 1.2rem;
+    }
+
+    @media screen and (min-width: 576px) {
+        & {
+          width: calc(100% / 12 * 6 - 1em);
+          align-self: flex-start;
+
+          &-title {
+            font-size: 2rem;
+          }
+
+          &-text {
+            display: block;
+          }
+          
+          .hidden-text {
+            display: none;
+          }
+
+          .inline-image {
+            display: block;
+          }
+        }
+    }
+      
+      @media screen and (min-width: 992px) {
+        & {
+          width: calc(100% / 12 * 4 - 1em);
+        } 
+    }
+}

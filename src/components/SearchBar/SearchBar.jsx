@@ -1,9 +1,15 @@
-import { MdSearch } from "react-icons/md"
+import { MdSearch } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { setSearchBarText } from "../../state/reducers/searchBarSlice";
 
-const SearchBar = ({ handleSearchBar }) => {
+import './SearchBar.scss';
+
+const SearchBar = () => {
+    
+    const dispatch = useDispatch();
     
     const handleChange = (e) => {
-        handleSearchBar(e.target.value);
+        dispatch(setSearchBarText(e.target.value));
     };
     
     return (

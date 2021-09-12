@@ -1,0 +1,11 @@
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: stretch;
+
+    @media screen and (min-width: 576px) {
+        & {
+          flex-direction: row;
+        }
+    }    
+}

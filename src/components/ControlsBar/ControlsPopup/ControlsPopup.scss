@@ -1,0 +1,40 @@
+.popup {
+    width: 200px;
+    background-color: rgba(0, 0, 0, .8);
+    backdrop-filter: blur(2px);
+    border-radius: .4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: .5em;
+    position: absolute;
+    bottom: 120px;
+    transition: left .4s;
+    display: none;
+
+    &-btn {
+        background-color: transparent;
+        width: 100%;
+        color: #fff;
+        padding-left: 0;
+        transition: background-color .5s,
+            margin .5s, color .5s, padding .5s; 
+
+        &:hover {
+            background-color: sandybrown;
+            padding-left: 1em;
+        }
+    }
+
+    .link-input {
+        display: block;
+        width: 100%;
+        background-color: #e1e1e1;
+        border: none;
+    }
+
+    &.show-popup {
+        display: flex;
+    }
+}

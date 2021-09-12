@@ -12,6 +12,7 @@ export function useCurrentWidth() {
     // in this case useEffect will execute only once because
     // it does not have any dependencies.
     useLayoutEffect(() => {
+        
         const resizeListener = () => {
             // change width from the state object
             setWidth(getWidth());

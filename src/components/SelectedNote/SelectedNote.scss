@@ -1,0 +1,97 @@
+.selected-note {
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em;
+    border-radius: .4em;
+    position: relative;
+
+    &-inline-image {
+        display: block;
+        width: 95%;
+        margin: 0 auto 1em;
+    }
+
+    &-title {
+        font-family: 'Fredericka the Great', cursive;
+        font-size: 2rem;
+        font-weight: normal;
+    }
+
+    &-delete-btn {
+        background-color: transparent;
+        font-size: 2rem;
+        padding: .5em;
+
+        &:hover {
+            color: #7c7d7e;
+        }
+    }
+
+    &-close-btn {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        cursor: pointer;
+        font-size: 1.5rem;
+
+        &:hover {
+            color: #7c7d7e;
+        }
+    }
+
+    &-footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: auto;
+        
+        &-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    } 
+}
+
+.edit-mode {
+    color: #7c7d7e;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: #dee2e4;
+        color: #1f1f1f;
+    }
+    
+    &.edit-btn {
+        background-color: transparent;
+        color: #1f1f1f;
+
+        &:hover {
+            color: #7c7d7e;
+        }
+    }
+}
+
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+
+    &-btn {
+        font-size: 2rem;
+        margin-top: 5em;
+        transition: background-color .2s, color .2s;
+        box-shadow: 0 0 .5em #adaeaf;
+
+        &:hover {
+            color: #fff;
+            background-color: sandybrown;
+        }
+    }
+}

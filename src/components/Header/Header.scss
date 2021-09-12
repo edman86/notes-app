@@ -1,0 +1,27 @@
+.header {
+    padding: .5em 0;
+    
+    &-panel {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .header-title {
+            font-family: 'Fredericka the Great', cursive;
+            font-weight: normal;
+            font-size: 3rem;
+        }
+
+        .light-or-dark-mode {
+            display: flex;
+            align-items: center;
+
+            .mod-icon {
+                margin-right: .1em;
+                font-size: 3rem;
+                color: #adaeaf;
+            }
+        }
+    }
+}
+  
