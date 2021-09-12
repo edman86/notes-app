@@ -39,6 +39,10 @@ const App = () => {
                     <Route exact path="/">
                         <Dashboard />
                     </Route>
+                    
+                    <Route path="/notes-app">
+                        <Dashboard />
+                    </Route>
 
                     <Route path="/:id" >
                         <SelectedNote />
