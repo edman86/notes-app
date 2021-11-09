@@ -76,7 +76,7 @@ const ControlsBar = ({ setImageUrl, updateHtml, refContainerTextarea, setNoteCol
                     <button
                         type="button"
                         id="fontName"
-                        className="btn controls-btn"
+                        className="controls-btn"
                         onClick={openCloseControlsPopup}
                     >
                         <BiFont />
@@ -86,7 +86,7 @@ const ControlsBar = ({ setImageUrl, updateHtml, refContainerTextarea, setNoteCol
                     <button
                         type="button"
                         id="fontSize"
-                        className="btn controls-btn"
+                        className="controls-btn"
                         onClick={openCloseControlsPopup}
                     >
                         <BiFontSize />
@@ -96,7 +96,7 @@ const ControlsBar = ({ setImageUrl, updateHtml, refContainerTextarea, setNoteCol
                     <button
                         type="button"
                         id="bold"
-                        className="btn controls-btn"
+                        className="controls-btn"
                         onClick={editTextBold}
                     >
                         <AiOutlineBold />
@@ -106,13 +106,13 @@ const ControlsBar = ({ setImageUrl, updateHtml, refContainerTextarea, setNoteCol
                     <button
                         type="button"
                         id="italic"
-                        className="btn controls-btn"
+                        className="controls-btn"
                         onClick={editTextItalic}
                     >
                         <AiOutlineItalic />
                     </button>
                 </li>
-                <li className="controls-item">
+                {/* <li className="controls-item">
                     <button
                         type="button"
                         id="createLink"
@@ -121,12 +121,12 @@ const ControlsBar = ({ setImageUrl, updateHtml, refContainerTextarea, setNoteCol
                     >
                         <BiLink />
                     </button>
-                </li>
+                </li> */}
                 <li className="controls-item">
                     <button
                         type="button"
                         id="addImage"
-                        className="btn controls-btn"
+                        className="controls-btn"
                         onClick={openCloseControlsPopup}
                     >
                         <BiImage />
@@ -136,7 +136,7 @@ const ControlsBar = ({ setImageUrl, updateHtml, refContainerTextarea, setNoteCol
                     <button
                         type="button"
                         id="noteColor"
-                        className="btn controls-btn"
+                        className="controls-btn"
                         onClick={ () => setIsColorPopupOpen(!isColorPopupOpen) }    
                     >
                         <BiPalette />

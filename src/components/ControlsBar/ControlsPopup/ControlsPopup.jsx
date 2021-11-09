@@ -17,6 +17,14 @@ const ControlsPopup = ({
     const popupContent = useSelector(state => state.controlsPopup[popupType]);
     const domNodeRef = useClickOutside(setIsControlsPopupOpen);
     
+    let popupLabel;
+    
+    if (popupType === 'createLink') {
+        popupLabel = 'Add link'
+    } else if (popupType === 'addImage') {
+        popupLabel = 'Add image link'
+    }
+
     // Need to set stopPropagation, in order case,
     // if user try to select input field, the popup will be closed,
     // because click event of "openCloseControlsPopup" function is bubbling
@@ -66,7 +74,7 @@ const ControlsPopup = ({
                 style={{ display: popupContent.submitButton }}
                 onClick={handleSubmitClick}
             >
-                Create Link
+                {popupLabel}
             </button>
         </div>
     );

@@ -16,9 +16,8 @@ const NoteEditor = () => {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [html, setHtml] = useState('');
-
     const [imageUrl, setImageUrl] = useState('');
-    const [noteColor, setNoteColor] = useState('');
+    const [noteColor, setNoteColor] = useState('#fff');
 
     const characterLimit = 200;
 
@@ -74,12 +73,27 @@ const NoteEditor = () => {
         setImageUrl('');
 
         // clear color
-        setNoteColor('');
+        setNoteColor('#fff');
     };
 
     // Closing editor without save note
     const closeEditor = () => {
         dispatch(click());
+        
+        // clear the title
+        setTitle('');
+        
+        // clear text field
+        setText('');
+
+        // clear state data of html
+        setHtml('');
+
+        // clear image url
+        setImageUrl('');
+
+        // clear color
+        setNoteColor('#fff');
     };
 
     // Adding text
@@ -109,7 +123,7 @@ const NoteEditor = () => {
 
     const addNoteTitle = (e) => {
         setTitle(e.target.value);
-    }
+    };
 
     useEffect(() => {
 
@@ -131,12 +145,15 @@ const NoteEditor = () => {
         <div
             className={`note-editor ${isShowNoteEditor && 'show'}`}
             onKeyPress={handleKeyPress}
+            style={{backgroundColor: noteColor}}
         >
             <AiOutlineClose
                 className="note-editor-close-btn"
                 onClick={closeEditor}
             />
 
+            <img src={imageUrl} className="note-editor-image" alt="" />
+            
             <input 
                 className="note-editor-title"
                 type="text"
@@ -144,8 +161,6 @@ const NoteEditor = () => {
                 placeholder="Add title..."
                 onChange={addNoteTitle} 
             />
-
-            <img src={imageUrl} className="note-image" alt="" />
             
             <p
                 className="textarea"

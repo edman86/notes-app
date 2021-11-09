@@ -8,13 +8,15 @@
     white-space: pre-wrap; /* keep the line spacing */
     background-color: #fdfdfd;
     box-shadow: 0 0 1em #7c7d7e;
-    max-height: 20em;
+    // max-height: 20em;
+    max-height: 100%;
     position: fixed;
     margin: auto;
     left: 0;
     right: 0;
-    top: 0;
-    bottom: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    // bottom: 0;
     display: none;
 
     &-footer {
@@ -53,9 +55,9 @@
         outline: none;
     }
 
-    .note-image {
+    &-image {
         display: block;
-        width: 50%;
+        max-width: 30%;
         margin: 0 auto;
     }
 
